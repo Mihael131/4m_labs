@@ -6,7 +6,7 @@
 MatriX Matrix_Pro::Gauss(MatriX &G_)
 {
 	MatriX G(G_);
-	for (int i = 0; i < G.m; i++)//первый проход
+	for (int i = 0; i < G.m; i++)//РїРµСЂРІС‹Р№ РїСЂРѕС…РѕРґ
 	{
 		int l;
 		for (l = i; l < G.m; l++)
@@ -24,7 +24,7 @@ MatriX Matrix_Pro::Gauss(MatriX &G_)
 				G.III(j + 1, i, -G.A[j + 1][i]);
 	}
 
-	for (int i = 0; i < G.m; i++)//второй проход
+	for (int i = 0; i < G.m; i++)//РІС‚РѕСЂРѕР№ РїСЂРѕС…РѕРґ
 	{
 		for (int j = 0; j < G.m; j++)
 		{
@@ -45,7 +45,7 @@ MatriX Matrix_Pro::Gauss(MatriX &G_)
 
 MatriX_Vector Matrix_Pro::solutionGauss(MatriX_Quad &A, MatriX_Vector &B)
 {
-	return MatriX_Vector(Gauss(A | B).block_vector(A.size()));//вектор решений
+	return MatriX_Vector(Gauss(A | B).block_vector(A.size()));//РІРµРєС‚РѕСЂ СЂРµС€РµРЅРёР№
 }
 
 MatriX_Quad Matrix_Pro::inverseGauss(MatriX_Quad &A)
@@ -64,7 +64,7 @@ double Matrix_Pro::detGauss(MatriX_Quad &A)
 	double det = 1.0;
 	MatriX_Quad G(A);
 
-	for (int i = 0; i < G.m; i++)//первый проход
+	for (int i = 0; i < G.m; i++)//РїРµСЂРІС‹Р№ РїСЂРѕС…РѕРґ
 	{
 		int l;
 		for (l = i; l < G.m; l++)
@@ -88,7 +88,7 @@ double Matrix_Pro::detGauss(MatriX_Quad &A)
 	}
 
 	for (int i = 0; i < G.m; i++)
-		det *= G.A[i][i];//для очистки совести и не только(нужное)
+		det *= G.A[i][i];//РґР»СЏ РѕС‡РёСЃС‚РєРё СЃРѕРІРµСЃС‚Рё Рё РЅРµ С‚РѕР»СЊРєРѕ(РЅСѓР¶РЅРѕРµ)
 
 	return det;
 }

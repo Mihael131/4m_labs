@@ -37,7 +37,7 @@ double TME::chord(double (*f)(double), double a_, double b_, double e)
 	if (f(a)*f(c) < 0)
 		orient = false;
 
-	while (abs(f(c)) > e)//можно добавить второе условие (c(n) - c(n-1) < e)
+	while (abs(f(c)) > e)//РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РІС‚РѕСЂРѕРµ СѓСЃР»РѕРІРёРµ (c(n) - c(n-1) < e)
 	{
 		if (orient)
 			a = c;
@@ -60,7 +60,7 @@ double TME::Newtone(double(*f)(double), double(*f_diff)(double), double(*f_diff2
 	double run;
 	double b = b_;
 
-	while (f(a)*f_diff2(a) > 0)//левая граница
+	while (f(a)*f_diff2(a) > 0)//Р»РµРІР°СЏ РіСЂР°РЅРёС†Р°
 	{
 		run = a - f(a) / f_diff(a);
 		if (abs(a - run) < e)
@@ -69,7 +69,7 @@ double TME::Newtone(double(*f)(double), double(*f_diff)(double), double(*f_diff2
 		std::cout << "a= " << a << " f(a)= " << f(a) << "\n";
 	}
 
-	while (f(b)*f_diff2(b) > 0)//правая граница
+	while (f(b)*f_diff2(b) > 0)//РїСЂР°РІР°СЏ РіСЂР°РЅРёС†Р°
 	{
 		run = b - f(b) / f_diff(b);
 		if (abs(b - run) < e)
@@ -91,7 +91,7 @@ double TME::iter(double(*f)(double), double(*g)(double), double(*g_diff)(double)
 	double run;
 	double b = b_;
 
-	while (g_diff(a) < 1)//левая граница
+	while (g_diff(a) < 1)//Р»РµРІР°СЏ РіСЂР°РЅРёС†Р°
 	{
 		run = g(a);
 		if (abs(f(a)) < e)
@@ -100,7 +100,7 @@ double TME::iter(double(*f)(double), double(*g)(double), double(*g_diff)(double)
 		std::cout << "a= " << a << " f(a)= " << f(a) << "\n";
 	}
 
-	while (g_diff(b) < 1)//правая граница
+	while (g_diff(b) < 1)//РїСЂР°РІР°СЏ РіСЂР°РЅРёС†Р°
 	{
 		run = g(b);
 		if (abs(f(b)) < e)

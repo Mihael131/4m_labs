@@ -6,7 +6,7 @@
 using namespace std;
 using namespace Matrix_Pro;
 
-MatriX_Quad Jacobian1(MatriX_Vector &MX)//для каждой системы индивидуально
+MatriX_Quad Jacobian1(MatriX_Vector &MX)//РґР»СЏ РєР°Р¶РґРѕР№ СЃРёСЃС‚РµРјС‹ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕ
 {
 	MatriX_Quad MQ(2);
 
@@ -16,7 +16,7 @@ MatriX_Quad Jacobian1(MatriX_Vector &MX)//для каждой системы индивидуально
 	return MQ;
 }
 
-MatriX_Vector F1(MatriX_Vector &MX)//для каждой системы индивидуально
+MatriX_Vector F1(MatriX_Vector &MX)//РґР»СЏ РєР°Р¶РґРѕР№ СЃРёСЃС‚РµРјС‹ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕ
 {
 	MatriX_Vector MF(2);
 
@@ -26,7 +26,7 @@ MatriX_Vector F1(MatriX_Vector &MX)//для каждой системы индивидуально
 	return MF;
 }
 
-MatriX_Quad Jacobian2(MatriX_Vector &MX)//для каждой системы индивидуально
+MatriX_Quad Jacobian2(MatriX_Vector &MX)//РґР»СЏ РєР°Р¶РґРѕР№ СЃРёСЃС‚РµРјС‹ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕ
 {
 	MatriX_Quad MQ(3);
 
@@ -37,7 +37,7 @@ MatriX_Quad Jacobian2(MatriX_Vector &MX)//для каждой системы индивидуально
 	return MQ;
 }
 
-MatriX_Vector F2(MatriX_Vector &MX)//для каждой системы индивидуально
+MatriX_Vector F2(MatriX_Vector &MX)//РґР»СЏ РєР°Р¶РґРѕР№ СЃРёСЃС‚РµРјС‹ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕ
 {
 	MatriX_Vector MF(3);
 
@@ -54,7 +54,7 @@ int main()
 	MatriX_Vector MB;
 
 	cout << setprecision(10);
-	cout << "Метод линеризации Ньютона\n\n";
+	cout << "РњРµС‚РѕРґ Р»РёРЅРµСЂРёР·Р°С†РёРё РќСЊСЋС‚РѕРЅР°\n\n";
 /*
 	double A1[2][1] = {
 		{2},
@@ -68,18 +68,18 @@ int main()
 
 	MB.init(&A1[0][0], 2);
 
-	cout << "Уравнение\n";
+	cout << "РЈСЂР°РІРЅРµРЅРёРµ\n";
 	cout << "4*x*x*x - y*y*y + 19 = 0\n3*x*y - 2*y - 20 = 0\n\n";
-	cout << "Начальное приближение [2,4]\n\nРешение (x,y): ";
+	cout << "РќР°С‡Р°Р»СЊРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ [2,4]\n\nР РµС€РµРЅРёРµ (x,y): ";
 	Newtone(F1, Jacobian1, MB, 5).T().print();
-	cout << "Проверка (подставляем ответ в исходное уравнение)\n";
+	cout << "РџСЂРѕРІРµСЂРєР° (РїРѕРґСЃС‚Р°РІР»СЏРµРј РѕС‚РІРµС‚ РІ РёСЃС…РѕРґРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ)\n";
 	F1(Newtone(F1, Jacobian1, MB, 5)).T().print();
 
 	MB.init(&B1[0][0], 2);
 
-	cout << "Начальное приближение [2,4]\n\nРешение (x,y): ";
+	cout << "РќР°С‡Р°Р»СЊРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ [2,4]\n\nР РµС€РµРЅРёРµ (x,y): ";
 	Newtone(F1, Jacobian1, MB, 5).T().print();
-	cout << "Проверка (подставляем ответ в исходное уравнение)\n";
+	cout << "РџСЂРѕРІРµСЂРєР° (РїРѕРґСЃС‚Р°РІР»СЏРµРј РѕС‚РІРµС‚ РІ РёСЃС…РѕРґРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ)\n";
 	F1(Newtone(F1, Jacobian1, MB, 5)).T().print();
 */
 	double A2[3][1] = {
@@ -96,23 +96,23 @@ int main()
 
 	MB.init(&A2[0][0], 3);
 
-	cout << "\nУравнение\n";
+	cout << "\nРЈСЂР°РІРЅРµРЅРёРµ\n";
 	cout << "-2*x + 5*y + 4*z = 0\n";
 	cout << "3*x*x + 3*y*y + 2*z - 5 = 0\n";
 	cout << "4*x*y - 5*z = 0\n\n";
-	cout << "Начальное приближение [1,1,1]\n\nРешение (x,y,z): ";
+	cout << "РќР°С‡Р°Р»СЊРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ [1,1,1]\n\nР РµС€РµРЅРёРµ (x,y,z): ";
 	Newtone(F2, Jacobian2, MB, 5).T().print();
-	cout << "Проверка (подставляем ответ в исходное уравнение)\n";
+	cout << "РџСЂРѕРІРµСЂРєР° (РїРѕРґСЃС‚Р°РІР»СЏРµРј РѕС‚РІРµС‚ РІ РёСЃС…РѕРґРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ)\n";
 	F2(Newtone(F2, Jacobian2, MB, 5)).T().print();
 
 	MB.init(&B2[0][0], 3);
 
-	cout << "Начальное приближение [-1,-1,1]\n\nРешение (x,y,z): ";
+	cout << "РќР°С‡Р°Р»СЊРЅРѕРµ РїСЂРёР±Р»РёР¶РµРЅРёРµ [-1,-1,1]\n\nР РµС€РµРЅРёРµ (x,y,z): ";
 	Newtone(F2, Jacobian2, MB, 5).T().print();
-	cout << "Проверка (подставляем ответ в исходное уравнение)\n";
+	cout << "РџСЂРѕРІРµСЂРєР° (РїРѕРґСЃС‚Р°РІР»СЏРµРј РѕС‚РІРµС‚ РІ РёСЃС…РѕРґРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ)\n";
 	F2(Newtone(F2, Jacobian2, MB, 5)).T().print();
 
-//	cout << "\n\nИнтерполяция\n\n";
+//	cout << "\n\nРРЅС‚РµСЂРїРѕР»СЏС†РёСЏ\n\n";
 
 	double X[5][1] = {
 		{ -1 },
@@ -142,21 +142,21 @@ int main()
 
 	P = interPolynom_Canon(MX, MY);
 	A = interPolynom_Newton(MX.block(1, 5), MY.block(1, 5));
-	cout << "Канонический интерполяционный многочлен\n";
+	cout << "РљР°РЅРѕРЅРёС‡РµСЃРєРёР№ РёРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅ\n";
 	cout << "x = ";	MX.T().print();
-	cout << "Коэфф. многочлена "; P.T().print();
+	cout << "РљРѕСЌС„С„. РјРЅРѕРіРѕС‡Р»РµРЅР° "; P.T().print();
 	cout << "x = 0.5, y = " << polynom_Canon(P, 0.5) << endl << endl;
-	cout << "Интерполяционный многочлен Ньютона\n";
+	cout << "РРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅ РќСЊСЋС‚РѕРЅР°\n";
 	cout << "x = "; MX.block(1, 5).T().print();
-	cout << "Коэфф. многочлена "; A.T().print();
+	cout << "РљРѕСЌС„С„. РјРЅРѕРіРѕС‡Р»РµРЅР° "; A.T().print();
 	cout << "x = 0.5, y = " << polynom_Newton(A, MX.block(1, 5), 0.5) << endl << endl;
-	cout << "Интерполяционный многочлен Лагранжа\n";
+	cout << "РРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅ Р›Р°РіСЂР°РЅР¶Р°\n";
 	cout << "x = "; MX.block(0, 4).T().print();
 	cout << "x = 0.5, y = " << polynom_Lagrange(MX.block(0, 4), MY.block(0, 4), 0.5) << endl << endl;
 
 	*/
 
-	cout << "\n\nМетод наименьших квадратов\n\n";
+	cout << "\n\nРњРµС‚РѕРґ РЅР°РёРјРµРЅСЊС€РёС… РєРІР°РґСЂР°С‚РѕРІ\n\n";
 
 	double X1[5][1] = {
 		{ -3 },
@@ -198,21 +198,21 @@ int main()
 	cout << "y = ";
 	MY.T().print();
 
-	cout << "Квдаратичная апроксимация (a,b,c)\n";
+	cout << "РљРІРґР°СЂР°С‚РёС‡РЅР°СЏ Р°РїСЂРѕРєСЃРёРјР°С†РёСЏ (a,b,c)\n";
 	nApr(MX, MY, 3).print();
 	double nev = 0;
 	for (int i = 0; i < MY.size(); i++)
 		nev += pow(polynom_Canon(nApr(MX, MY, 3), MX[i]) - MY[i], 2);
-	cout << "Невязки: " << nev << "\n";
+	cout << "РќРµРІСЏР·РєРё: " << nev << "\n";
 
-	cout << "\n\nЛинейная аппроксимация (a,b)\n";
+	cout << "\n\nР›РёРЅРµР№РЅР°СЏ Р°РїРїСЂРѕРєСЃРёРјР°С†РёСЏ (a,b)\n";
 	nApr(MX, MY, 2).print();
 	nev = 0;
 	for (int i = 0; i < MY.size(); i++)
 		nev += pow(polynom_Canon(nApr(MX, MY, 2), MX[i]) - MY[i], 2);
-	cout << "Невязки: " << nev << "\n\n";
+	cout << "РќРµРІСЏР·РєРё: " << nev << "\n\n";
 
-/*	cout << "\n\n\nИнтерполяция сплайнами\n";
+/*	cout << "\n\n\nРРЅС‚РµСЂРїРѕР»СЏС†РёСЏ СЃРїР»Р°Р№РЅР°РјРё\n";
 
 	double X2[6][1] = {
 		{ -6 },
@@ -238,9 +238,9 @@ int main()
 	cout << "    a         b        c        d\n";
 	interSpline(MX, MY).T().print();
 	
-	cout << "Значения в середине каждого отрезка\n";
+	cout << "Р—РЅР°С‡РµРЅРёСЏ РІ СЃРµСЂРµРґРёРЅРµ РєР°Р¶РґРѕРіРѕ РѕС‚СЂРµР·РєР°\n";
 	for (int i = 0; i < interSpline(MX, MY).sizeColumn(); i++)
-		cout << i + 1 << " сплайн, x = " << (MX[i] + MX[i + 1]) / 2.0 << ", y = " << polynom_Canon(interSpline(MX, MY).block_vector(i), (MX[i] + MX[i + 1]) / 2.0) << "\n";
+		cout << i + 1 << " СЃРїР»Р°Р№РЅ, x = " << (MX[i] + MX[i + 1]) / 2.0 << ", y = " << polynom_Canon(interSpline(MX, MY).block_vector(i), (MX[i] + MX[i + 1]) / 2.0) << "\n";
 	*/
 	system("pause");
 }

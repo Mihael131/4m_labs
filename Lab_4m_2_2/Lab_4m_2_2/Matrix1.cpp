@@ -80,9 +80,9 @@ bool MatriX::isVector()
 MatriX_Quad MatriX::toMatriX_Quad()
 {
 	if (!isQuad())
-		std::cout << "ERROR: MatriX_Quad MatriX::toMatriX_Quad()   Çàïðåùåííûé âûçîâ ôóíêöèè!\n\n";
+		std::cout << "ERROR: MatriX_Quad MatriX::toMatriX_Quad()   Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸!\n\n";
 	
-	int size = n;//áîëåå áåçîïàñíàÿ âåðñèÿ
+	int size = n;//Ð±Ð¾Ð»ÐµÐµ Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð°Ñ Ð²ÐµÑ€ÑÐ¸Ñ
 	if (m < n)
 		size = m;
 
@@ -97,7 +97,7 @@ MatriX_Quad MatriX::toMatriX_Quad()
 MatriX_Vector MatriX::toMatriX_Vector()
 {
 	if (!isVector())
-		std::cout << "ERROR: MatriX_Vector MatriX::toMatriX_Vector()   Çàïðåùåííûé âûçîâ ôóíêöèè!\n\n";
+		std::cout << "ERROR: MatriX_Vector MatriX::toMatriX_Vector()   Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸!\n\n";
 	
 	MatriX_Vector MV0(m);
 	for (int i = 0; i < m; i++)
@@ -310,7 +310,7 @@ MatriX MatriX::operator+(MatriX &M)
 			for (int j = 0; j < n; j++)
 				M0.A[i][j] = A[i][j] + M.A[i][j];
 	else
-		std::cout << "ERROR: MatriX MatriX::operator+(MatriX &M)   Çàïðåùåííûé âûçîâ ôóíêöèè!\n\n";
+		std::cout << "ERROR: MatriX MatriX::operator+(MatriX &M)   Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸!\n\n";
 	return M0;
 }
 
@@ -322,7 +322,7 @@ MatriX MatriX::operator-(MatriX &M)
 			for (int j = 0; j < n; j++)
 				M0.A[i][j] = A[i][j] - M.A[i][j];
 	else
-		std::cout << "ERROR: MatriX MatriX::operator-(MatriX &M)   Çàïðåùåííûé âûçîâ ôóíêöèè!\n\n";
+		std::cout << "ERROR: MatriX MatriX::operator-(MatriX &M)   Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸!\n\n";
 	return M0;
 }
 
@@ -336,7 +336,7 @@ MatriX MatriX::operator*(MatriX &M)
 				for (int i1 = 0; i1 < n; i1++)
 					M0.A[i][j] += A[i][i1] * M.A[i1][j];
 	else
-		std::cout << "ERROR: MatriX MatriX::operator*(MatriX &M)   Çàïðåùåííûé âûçîâ ôóíêöèè!\n\n";
+		std::cout << "ERROR: MatriX MatriX::operator*(MatriX &M)   Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸!\n\n";
 
 	return M0;
 }

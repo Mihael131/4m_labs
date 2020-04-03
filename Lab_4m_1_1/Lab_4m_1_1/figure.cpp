@@ -6,25 +6,25 @@
 MatriX Matrix_Pro::Gauss(MatriX &G_)
 {
 	MatriX G(G_);
-	for (int i = 0; i < G.m; i++)//первый проход
+	for (int i = 0; i < G.m; i++)//РїРµСЂРІС‹Р№ РїСЂРѕС…РѕРґ
 	{
 		int l;
-		for (l = i; l < G.m; l++)//ищем ненулевой элемент
-			if (G.A[i][i] != 0)//если нашли, выходим из цикла
+		for (l = i; l < G.m; l++)//РёС‰РµРј РЅРµРЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚
+			if (G.A[i][i] != 0)//РµСЃР»Рё РЅР°С€Р»Рё, РІС‹С…РѕРґРёРј РёР· С†РёРєР»Р°
 				break;
 			else
-				G.shift(i);//если нет, делаем сдвиг
-		if (l == G.m)//если прокрутили все строки и не нашли ненулевого, переходим к след столбцу
+				G.shift(i);//РµСЃР»Рё РЅРµС‚, РґРµР»Р°РµРј СЃРґРІРёРі
+		if (l == G.m)//РµСЃР»Рё РїСЂРѕРєСЂСѓС‚РёР»Рё РІСЃРµ СЃС‚СЂРѕРєРё Рё РЅРµ РЅР°С€Р»Рё РЅРµРЅСѓР»РµРІРѕРіРѕ, РїРµСЂРµС…РѕРґРёРј Рє СЃР»РµРґ СЃС‚РѕР»Р±С†Сѓ
 			continue;
 
-		G.II(i, 1.0 / G.A[i][i]);//делим элемент на себя
+		G.II(i, 1.0 / G.A[i][i]);//РґРµР»РёРј СЌР»РµРјРµРЅС‚ РЅР° СЃРµР±СЏ
 
-		for (int j = i; j < G.m - 1; j++)//обнуляем все что под ним
+		for (int j = i; j < G.m - 1; j++)//РѕР±РЅСѓР»СЏРµРј РІСЃРµ С‡С‚Рѕ РїРѕРґ РЅРёРј
 			if (G.A[j + 1][i] != 0)
 				G.III(j + 1, i, -G.A[j + 1][i]);
 	}
 
-	for (int i = 0; i < G.m; i++)//второй проход обнуляем элементы выше главной диагонали
+	for (int i = 0; i < G.m; i++)//РІС‚РѕСЂРѕР№ РїСЂРѕС…РѕРґ РѕР±РЅСѓР»СЏРµРј СЌР»РµРјРµРЅС‚С‹ РІС‹С€Рµ РіР»Р°РІРЅРѕР№ РґРёР°РіРѕРЅР°Р»Рё
 	{
 		for (int j = 0; j < G.m; j++)
 		{
@@ -45,7 +45,7 @@ MatriX Matrix_Pro::Gauss(MatriX &G_)
 
 MatriX_Vector Matrix_Pro::solutionGauss(MatriX_Quad &A, MatriX_Vector &B)
 {
-	return MatriX_Vector(Gauss(A | B).block_vector(A.size()));//вектор решений
+	return MatriX_Vector(Gauss(A | B).block_vector(A.size()));//РІРµРєС‚РѕСЂ СЂРµС€РµРЅРёР№
 }
 
 MatriX_Quad Matrix_Pro::inverseGauss(MatriX_Quad &A)
@@ -64,7 +64,7 @@ double Matrix_Pro::detGauss(MatriX_Quad &A)
 	double det = 1.0;
 	MatriX_Quad G(A);
 
-	for (int i = 0; i < G.m; i++)//первый проход
+	for (int i = 0; i < G.m; i++)//РїРµСЂРІС‹Р№ РїСЂРѕС…РѕРґ
 	{
 		int l;
 		for (l = i; l < G.m; l++)
@@ -88,7 +88,7 @@ double Matrix_Pro::detGauss(MatriX_Quad &A)
 	}
 
 	for (int i = 0; i < G.m; i++)
-		det *= G.A[i][i];//для очистки совести и не только(нужное)
+		det *= G.A[i][i];//РґР»СЏ РѕС‡РёСЃС‚РєРё СЃРѕРІРµСЃС‚Рё Рё РЅРµ С‚РѕР»СЊРєРѕ(РЅСѓР¶РЅРѕРµ)
 
 	return det;
 }
@@ -108,26 +108,26 @@ MatriX_Vector Matrix_Pro::solutionSimpleIter(MatriX_Quad &A, MatriX_Vector &B, i
 
 	MatriX_Vector x1(b);
 	MatriX_Vector x2(b);
-	x1.initNull();//лиbо b
+	x1.initNull();//Р»РёbРѕ b
 
-	MatriX_Vector N1(M.size());//нормы
+	MatriX_Vector N1(M.size());//РЅРѕСЂРјС‹
 	MatriX_Vector N2(M.size());
 	for (int i = 0; i < M.size(); i++)
 		for (int j = 0; j < M.size(); j++)
 		{
-			N1.setElem(i, N1[i] + M(i, j));// Теперь норм
+			N1.setElem(i, N1[i] + M(i, j));// РўРµРїРµСЂСЊ РЅРѕСЂРј
 			N2.setElem(i, N2[i] + M(j, i));
 		}
 
-	std::cout << "Норма ||B||1: " << abs(N1.absMaxElem()) << " < 1\n";
-	std::cout << "Норма ||B||2: " << abs(N2.absMaxElem()) << " < 1\n\n";
+	std::cout << "РќРѕСЂРјР° ||B||1: " << abs(N1.absMaxElem()) << " < 1\n";
+	std::cout << "РќРѕСЂРјР° ||B||2: " << abs(N2.absMaxElem()) << " < 1\n\n";
 
 	for (int i = 0; i < count_iter; i++)
 	{
 		x2 = M*x1 + b;
 		x1 = x2;
 
-		std::cout << i + 1 << "-ая итерация x = ";
+		std::cout << i + 1 << "-Р°СЏ РёС‚РµСЂР°С†РёСЏ x = ";
 		x1.T().print();
 	}
 
@@ -163,17 +163,17 @@ MatriX_Vector Matrix_Pro::solutionSeidel(MatriX_Quad &A, MatriX_Vector &B, int c
 	MatriX_Vector x2(b);
 	x1.initNull();
 
-	MatriX_Vector N1(B1.size());//нормы
+	MatriX_Vector N1(B1.size());//РЅРѕСЂРјС‹
 	MatriX_Vector N2(B1.size());
 	for (int i = 0; i < B1.size(); i++)
 		for (int j = 0; j < B1.size(); j++)
 		{
-			N1.setElem(i, N1[i] + (B1 + B2)(i, j));// Теперь норм
+			N1.setElem(i, N1[i] + (B1 + B2)(i, j));// РўРµРїРµСЂСЊ РЅРѕСЂРј
 			N2.setElem(i, N2[i] + (B1 + B2)(j, i));
 		}
 
-	std::cout << "Норма ||B||1: " << abs(N1.absMaxElem()) << " < 1\n";
-	std::cout << "Норма ||B||2: " << abs(N2.absMaxElem()) << " < 1\n\n";
+	std::cout << "РќРѕСЂРјР° ||B||1: " << abs(N1.absMaxElem()) << " < 1\n";
+	std::cout << "РќРѕСЂРјР° ||B||2: " << abs(N2.absMaxElem()) << " < 1\n\n";
 
 
 	for (int i = 0; i < count_iter; i++)
@@ -183,7 +183,7 @@ MatriX_Vector Matrix_Pro::solutionSeidel(MatriX_Quad &A, MatriX_Vector &B, int c
 		M.initIdentity();
 		M = M - B2;
 
-		for (int k = 0; k < x2.size(); k++)//решение прямым ходом сиситемы (E-B2)*x2 = s
+		for (int k = 0; k < x2.size(); k++)//СЂРµС€РµРЅРёРµ РїСЂСЏРјС‹Рј С…РѕРґРѕРј СЃРёСЃРёС‚РµРјС‹ (E-B2)*x2 = s
 		{
 			double sum = 0;
 			for (int j = 0; j < k; j++)
@@ -191,7 +191,7 @@ MatriX_Vector Matrix_Pro::solutionSeidel(MatriX_Quad &A, MatriX_Vector &B, int c
 			x2.setElem(k, s[k] - sum);
 		}
 
-		std::cout << i + 1 << "-ая итерация:  ";
+		std::cout << i + 1 << "-Р°СЏ РёС‚РµСЂР°С†РёСЏ:  ";
 		x2.T().print(12);
 		
 		x1 = x2;
@@ -261,16 +261,16 @@ MatriX_Vector Matrix_Pro::solutionLU(MatriX_Quad &A, MatriX_Vector &B)
 
 	LU(A, L, U);
 
-	std::cout << "\nМатрица L\n";
+	std::cout << "\nРњР°С‚СЂРёС†Р° L\n";
 	L.print(13);
 
-	std::cout << "Матрица U\n";
+	std::cout << "РњР°С‚СЂРёС†Р° U\n";
 	U.print(13);
 
-	std::cout << "Вектор решений\n";
+	std::cout << "Р’РµРєС‚РѕСЂ СЂРµС€РµРЅРёР№\n";
 
 	//L*U*X = MB
-	for (int i = 0; i < L.size(); i++)//L*Y = MB - прямой ход
+	for (int i = 0; i < L.size(); i++)//L*Y = MB - РїСЂСЏРјРѕР№ С…РѕРґ
 	{
 		double sum = 0;
 		for (int j = 0; j < i; j++)
@@ -278,7 +278,7 @@ MatriX_Vector Matrix_Pro::solutionLU(MatriX_Quad &A, MatriX_Vector &B)
 		Y.setElem(i, (B[i] - sum) / L(i,i));
 	}
 
-	for (int i = U.size() - 1; i >= 0; i--)//Y = U*X  - обратный ход
+	for (int i = U.size() - 1; i >= 0; i--)//Y = U*X  - РѕР±СЂР°С‚РЅС‹Р№ С…РѕРґ
 	{
 		double sum = 0;
 		for (int j = i + 1; j < U.size(); j++)
@@ -303,7 +303,7 @@ MatriX_Quad Matrix_Pro::inverseLU(MatriX_Quad &A)
 
 	for (int k = 0; k < A.size(); k++)
 	{
-		for (int i = 0; i < L.size(); i++)//L*Y = MB - прямой ход
+		for (int i = 0; i < L.size(); i++)//L*Y = MB - РїСЂСЏРјРѕР№ С…РѕРґ
 		{
 			double sum = 0;
 			for (int j = 0; j < i; j++)
@@ -311,7 +311,7 @@ MatriX_Quad Matrix_Pro::inverseLU(MatriX_Quad &A)
 			Y.setElem(i, k, (E(i, k) - sum) / L(i, i));
 		}
 
-		for (int i = U.size() - 1; i >= 0; i--)//Y = U*X  - обратный ход
+		for (int i = U.size() - 1; i >= 0; i--)//Y = U*X  - РѕР±СЂР°С‚РЅС‹Р№ С…РѕРґ
 		{
 			double sum = 0;
 			for (int j = i + 1; j < U.size(); j++)
@@ -349,7 +349,7 @@ MatriX_Vector Matrix_Pro::stepenRadVec(MatriX_Quad &A, int count_iter)
 		W = V / V.absMaxElem();
 	}
 
-	return V;//не нормированный
+	return V;//РЅРµ РЅРѕСЂРјРёСЂРѕРІР°РЅРЅС‹Р№
 }
 
 void Matrix_Pro::rotateYakobi(MatriX_Vector &SL, MatriX_Quad &SV, MatriX_Quad &A, int count_iter)
@@ -378,13 +378,13 @@ void Matrix_Pro::rotateYakobi(MatriX_Vector &SL, MatriX_Quad &SV, MatriX_Quad &A
 		//2
 		double f;
 		if (abs(A1(k, k) - A1(m, m)) >= 0.0000001)
-			f = 0.5*atan(2.0*(A1(k, m) / (A1(k, k) - A1(m, m))));//abs мб
+			f = 0.5*atan(2.0*(A1(k, m) / (A1(k, k) - A1(m, m))));//abs РјР±
 		else if (A1(k, m) < 0)
 				f = -atan(1.0);
 			 else
 				f = atan(1.0);
 
-//		std::cout << "Угол " << f << "\n";
+//		std::cout << "РЈРіРѕР» " << f << "\n";
 
 		//3
 		H1.initIdentity();
@@ -403,7 +403,7 @@ void Matrix_Pro::rotateYakobi(MatriX_Vector &SL, MatriX_Quad &SV, MatriX_Quad &A
 	{
 		L.setElem(i, A1(i, i));
 		H.II(i, 1.0 / H.T().block_vector(i).absMaxElem());//	
-//		H.II(i, L[i]);//теперь здеся и собст. значения и вектора
+//		H.II(i, L[i]);//С‚РµРїРµСЂСЊ Р·РґРµСЃСЏ Рё СЃРѕР±СЃС‚. Р·РЅР°С‡РµРЅРёСЏ Рё РІРµРєС‚РѕСЂР°
 	}
 	H = H.T();
 	
@@ -437,7 +437,7 @@ MatriX_Vector Matrix_Pro::proj(MatriX_Vector &v1, MatriX_Vector &v2)
 	return v1*(scalar(v1, v2) / scalar(v1, v1));
 }
 
-void Matrix_Pro::QR(MatriX_Quad &A, MatriX_Quad &Q, MatriX_Quad &R)//работает!
+void Matrix_Pro::QR(MatriX_Quad &A, MatriX_Quad &Q, MatriX_Quad &R)//СЂР°Р±РѕС‚Р°РµС‚!
 {
 	Q = A;
 	for (int i = 0; i < A.size(); i++)
@@ -495,7 +495,7 @@ MatriX_Quad Matrix_Pro::methodInvIter(MatriX_Quad &A, MatriX_Vector &L, int coun
 		for (int j = 0; j < count_iter; j++)
 		{
 			X = solutionGauss(A - E*L[i], X1);
-			X = X / abs(X.absMaxElem());//нормировка!
+			X = X / abs(X.absMaxElem());//РЅРѕСЂРјРёСЂРѕРІРєР°!
 			X1 = X;
 		}	
 		for (int j = 0; j < L.size(); j++)

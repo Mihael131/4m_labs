@@ -3,36 +3,36 @@
 
 namespace Matrix_Pro
 {
-	MatriX Gauss(MatriX &G);//привидение к ступенчатому виду
-	double detGauss(MatriX_Quad &A);//нахождение орпеделителя методом Гаусса
-	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//решение слау методом Гаусса
-	MatriX_Quad inverseGauss(MatriX_Quad &A);//нахождение обратной матрицы методом Гаусса
+	MatriX Gauss(MatriX &G);//РїСЂРёРІРёРґРµРЅРёРµ Рє СЃС‚СѓРїРµРЅС‡Р°С‚РѕРјСѓ РІРёРґСѓ
+	double detGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕСЂРїРµРґРµР»РёС‚РµР»СЏ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Quad inverseGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
 	MatriX_Vector running(MatriX_Quad &A, MatriX_Vector &B);
 	
-	//численное интегрирование //доделать  с более грамотным разбиением
-	double formulTrapeze(double(*f)(double), double a, double b, double h);//формула трапеций
-	double formulSimpson(double(*f)(double), double a, double b, double h);//формула Симпсона
+	//С‡РёСЃР»РµРЅРЅРѕРµ РёРЅС‚РµРіСЂРёСЂРѕРІР°РЅРёРµ //РґРѕРґРµР»Р°С‚СЊ  СЃ Р±РѕР»РµРµ РіСЂР°РјРѕС‚РЅС‹Рј СЂР°Р·Р±РёРµРЅРёРµРј
+	double formulTrapeze(double(*f)(double), double a, double b, double h);//С„РѕСЂРјСѓР»Р° С‚СЂР°РїРµС†РёР№
+	double formulSimpson(double(*f)(double), double a, double b, double h);//С„РѕСЂРјСѓР»Р° РЎРёРјРїСЃРѕРЅР°
 	
-	double formulRunge_Romberg(double z1, double z2, double h1, double h2, int p);//формула Рунге-Ромберга
-	double formulRunge(MatriX_Vector &Z, MatriX_Vector &H, int p);//формула Рунге
+	double formulRunge_Romberg(double z1, double z2, double h1, double h2, int p);//С„РѕСЂРјСѓР»Р° Р СѓРЅРіРµ-Р РѕРјР±РµСЂРіР°
+	double formulRunge(MatriX_Vector &Z, MatriX_Vector &H, int p);//С„РѕСЂРјСѓР»Р° Р СѓРЅРіРµ
 
-	//задача Коши для ОДУ I порядка
+	//Р·Р°РґР°С‡Р° РљРѕС€Рё РґР»СЏ РћР”РЈ I РїРѕСЂСЏРґРєР°
 	void methodEuler_ODU_I(MatriX_Vector &X, MatriX_Vector &Y, 
-		double(*f)(double,double), double a, double b, double y0, double h);//метод Эйлера
+		double(*f)(double,double), double a, double b, double y0, double h);//РјРµС‚РѕРґ Р­Р№Р»РµСЂР°
 	void methodRunge_Kutta_ODU_I(MatriX_Vector &X, MatriX_Vector &Y, 
-		double(*f)(double, double), double a, double b, double y0, double h);//метод Рунге Кутты
+		double(*f)(double, double), double a, double b, double y0, double h);//РјРµС‚РѕРґ Р СѓРЅРіРµ РљСѓС‚С‚С‹
 
-	//задача Коши для ОДУ II порядка
+	//Р·Р°РґР°С‡Р° РљРѕС€Рё РґР»СЏ РћР”РЈ II РїРѕСЂСЏРґРєР°
 	void methodEuler_ODU_II(MatriX_Vector &X, MatriX_Vector &Y, MatriX_Vector &Z, 
-		double(*f)(double,double,double), double a, double b, double y0, double z0, double h);//метод Эйлера
+		double(*f)(double,double,double), double a, double b, double y0, double z0, double h);//РјРµС‚РѕРґ Р­Р№Р»РµСЂР°
 	void methodRunge_Kutta_ODU_II(MatriX_Vector &X, MatriX_Vector &Y, MatriX_Vector &Z, 
-		double(*f)(double, double, double), double a, double b, double y0, double z0, double h);//метод Рунге Кутты
+		double(*f)(double, double, double), double a, double b, double y0, double z0, double h);//РјРµС‚РѕРґ Р СѓРЅРіРµ РљСѓС‚С‚С‹
 
-	//краевая задача для ОДУ II пордяка
+	//РєСЂР°РµРІР°СЏ Р·Р°РґР°С‡Р° РґР»СЏ РћР”РЈ II РїРѕСЂРґСЏРєР°
 	void methodFinDiff_ODU_II(MatriX_Vector &X, MatriX_Vector &Y,
 		double (*k)(double), double (*l)(double), double (*m)(double), double (*f)(double),
 		double r, double s, double t, 
 		double v, double w, double z, 
-		double a, double b, double h);//метод конечных разностей
+		double a, double b, double h);//РјРµС‚РѕРґ РєРѕРЅРµС‡РЅС‹С… СЂР°Р·РЅРѕСЃС‚РµР№
 }
 

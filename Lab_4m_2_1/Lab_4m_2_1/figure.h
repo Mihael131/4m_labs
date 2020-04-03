@@ -3,15 +3,15 @@
 
 namespace TME
 {
-	//метод половинного деления (дихотомия)
+	//РјРµС‚РѕРґ РїРѕР»РѕРІРёРЅРЅРѕРіРѕ РґРµР»РµРЅРёСЏ (РґРёС…РѕС‚РѕРјРёСЏ)
 	double dichotomy(double (*f)(double), double a_, double b_, double e);
 
-	//метод хорд (секущих)
+	//РјРµС‚РѕРґ С…РѕСЂРґ (СЃРµРєСѓС‰РёС…)
 	double chord(double (*f)(double), double a_, double b_, double e);
 
-	//метод касательных (Ньютона)
+	//РјРµС‚РѕРґ РєР°СЃР°С‚РµР»СЊРЅС‹С… (РќСЊСЋС‚РѕРЅР°)
 	double Newtone(double(*f)(double), double(*f_diff)(double), double(*f_diff2)(double), double a_, double b_, double e);
 
-	//метод итераций
+	//РјРµС‚РѕРґ РёС‚РµСЂР°С†РёР№
 	double iter(double (*f)(double), double (*g)(double), double (*g_diff)(double), double a_, double b_, double e);
 }

@@ -3,28 +3,28 @@
 
 namespace Matrix_Pro
 {
-	MatriX Gauss(MatriX &G);//привидение к ступенчатому виду
-	double detGauss(MatriX_Quad &A);//нахождение орпеделителя методом Гаусса
-	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//решение слау методом Гаусса
-	MatriX_Quad inverseGauss(MatriX_Quad &A);//нахождение обратной матрицы методом Гаусса
+	MatriX Gauss(MatriX &G);//РїСЂРёРІРёРґРµРЅРёРµ Рє СЃС‚СѓРїРµРЅС‡Р°С‚РѕРјСѓ РІРёРґСѓ
+	double detGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕСЂРїРµРґРµР»РёС‚РµР»СЏ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Quad inverseGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
 	
-	MatriX_Vector solutionSimpleIter(MatriX_Quad &A, MatriX_Vector &B, int count_iter);//решение слау методом простых итераций
-	MatriX_Vector solutionSeidel(MatriX_Quad &A, MatriX_Vector &B, int count_iter);//решение слау методом Зейделя
+	MatriX_Vector solutionSimpleIter(MatriX_Quad &A, MatriX_Vector &B, int count_iter);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚С‹С… РёС‚РµСЂР°С†РёР№
+	MatriX_Vector solutionSeidel(MatriX_Quad &A, MatriX_Vector &B, int count_iter);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ РјРµС‚РѕРґРѕРј Р—РµР№РґРµР»СЏ
 
-	MatriX_Vector running(MatriX_Quad &A, MatriX_Vector &B);//метод прогонки
+	MatriX_Vector running(MatriX_Quad &A, MatriX_Vector &B);//РјРµС‚РѕРґ РїСЂРѕРіРѕРЅРєРё
 
-	void LU(MatriX_Quad &A, MatriX_Quad &L, MatriX_Quad &U);//инициализация L и U (разложение LU)
-	MatriX_Vector solutionLU(MatriX_Quad &A, MatriX_Vector &B);//решение слау с помощью LU разложения
-	MatriX_Quad inverseLU(MatriX_Quad &A);//нахождение обратной матрицы с помощью LU разложения 
-	double detLU(MatriX_Quad &A);//нахождение определителя с помощью LU разложения
+	void LU(MatriX_Quad &A, MatriX_Quad &L, MatriX_Quad &U);//РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ L Рё U (СЂР°Р·Р»РѕР¶РµРЅРёРµ LU)
+	MatriX_Vector solutionLU(MatriX_Quad &A, MatriX_Vector &B);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ СЃ РїРѕРјРѕС‰СЊСЋ LU СЂР°Р·Р»РѕР¶РµРЅРёСЏ
+	MatriX_Quad inverseLU(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹ СЃ РїРѕРјРѕС‰СЊСЋ LU СЂР°Р·Р»РѕР¶РµРЅРёСЏ 
+	double detLU(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ СЃ РїРѕРјРѕС‰СЊСЋ LU СЂР°Р·Р»РѕР¶РµРЅРёСЏ
 
-	MatriX_Vector stepenRadVec(MatriX_Quad &A, int count_iter);//степенной метод вычисления спектрального радиуса
-	void rotateYakobi(MatriX_Vector &SL, MatriX_Quad &SV, MatriX_Quad &A, int count_iter);//метод вращений Якоби для симметричной матрицы
+	MatriX_Vector stepenRadVec(MatriX_Quad &A, int count_iter);//СЃС‚РµРїРµРЅРЅРѕР№ РјРµС‚РѕРґ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃРїРµРєС‚СЂР°Р»СЊРЅРѕРіРѕ СЂР°РґРёСѓСЃР°
+	void rotateYakobi(MatriX_Vector &SL, MatriX_Quad &SV, MatriX_Quad &A, int count_iter);//РјРµС‚РѕРґ РІСЂР°С‰РµРЅРёР№ РЇРєРѕР±Рё РґР»СЏ СЃРёРјРјРµС‚СЂРёС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
 
-	double scalar(MatriX_Vector &v1, MatriX_Vector &v2);//скалярное произведение векторов
-	MatriX_Vector proj(MatriX_Vector &v1, MatriX_Vector &v2);//проекция вектора v2 колинеарно вектору v1
-	void QR(MatriX_Quad &A, MatriX_Quad &Q, MatriX_Quad &R);//QR разложение
-	MatriX_Vector methodQR(MatriX_Quad &A, int count_iter);//метод QR для нахождения собственных значений
-	MatriX_Quad methodInvIter(MatriX_Quad &A, MatriX_Vector &L, int count_iter);//метод обратных итераций
+	double scalar(MatriX_Vector &v1, MatriX_Vector &v2);//СЃРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІРµРєС‚РѕСЂРѕРІ
+	MatriX_Vector proj(MatriX_Vector &v1, MatriX_Vector &v2);//РїСЂРѕРµРєС†РёСЏ РІРµРєС‚РѕСЂР° v2 РєРѕР»РёРЅРµР°СЂРЅРѕ РІРµРєС‚РѕСЂСѓ v1
+	void QR(MatriX_Quad &A, MatriX_Quad &Q, MatriX_Quad &R);//QR СЂР°Р·Р»РѕР¶РµРЅРёРµ
+	MatriX_Vector methodQR(MatriX_Quad &A, int count_iter);//РјРµС‚РѕРґ QR РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ СЃРѕР±СЃС‚РІРµРЅРЅС‹С… Р·РЅР°С‡РµРЅРёР№
+	MatriX_Quad methodInvIter(MatriX_Quad &A, MatriX_Vector &L, int count_iter);//РјРµС‚РѕРґ РѕР±СЂР°С‚РЅС‹С… РёС‚РµСЂР°С†РёР№
 }
 

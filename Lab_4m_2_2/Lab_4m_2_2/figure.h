@@ -3,30 +3,30 @@
 
 namespace Matrix_Pro
 {
-	MatriX Gauss(MatriX &G);//привидение к ступенчатому виду
-	double detGauss(MatriX_Quad &A);//нахождение орпеделителя методом Гаусса
-	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//решение слау методом Гаусса
-	MatriX_Quad inverseGauss(MatriX_Quad &A);//нахождение обратной матрицы методом Гаусса
+	MatriX Gauss(MatriX &G);//РїСЂРёРІРёРґРµРЅРёРµ Рє СЃС‚СѓРїРµРЅС‡Р°С‚РѕРјСѓ РІРёРґСѓ
+	double detGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕСЂРїРµРґРµР»РёС‚РµР»СЏ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Vector solutionGauss(MatriX_Quad &A, MatriX_Vector &B);//СЂРµС€РµРЅРёРµ СЃР»Р°Сѓ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
+	MatriX_Quad inverseGauss(MatriX_Quad &A);//РЅР°С…РѕР¶РґРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
 	MatriX_Vector running(MatriX_Quad &A, MatriX_Vector &B);
 	
-	//метод линеризации Ньютона 
+	//РјРµС‚РѕРґ Р»РёРЅРµСЂРёР·Р°С†РёРё РќСЊСЋС‚РѕРЅР° 
 	MatriX_Vector Newtone(MatriX_Vector (*F)(MatriX_Vector&), MatriX_Quad (*J)(MatriX_Vector&), MatriX_Vector &VX, int count_iter);
 
-	//интерполяционный многочлен (канонический)
+	//РёРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅ (РєР°РЅРѕРЅРёС‡РµСЃРєРёР№)
 	MatriX_Vector interPolynom_Canon(MatriX_Vector &X, MatriX_Vector &Y);
 	double polynom_Canon(MatriX_Vector &P, double x);
 
-	//интерполяционный многочлена Лагранжа
+	//РёРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅР° Р›Р°РіСЂР°РЅР¶Р°
 	double polynom_Lagrange(MatriX_Vector &X, MatriX_Vector &Y, double x);
 
-	//интерполяционный многочлен Ньютона
+	//РёРЅС‚РµСЂРїРѕР»СЏС†РёРѕРЅРЅС‹Р№ РјРЅРѕРіРѕС‡Р»РµРЅ РќСЊСЋС‚РѕРЅР°
 	double f_Newton(MatriX_Vector &X, MatriX_Vector &Y);
 	MatriX_Vector interPolynom_Newton(MatriX_Vector &X, MatriX_Vector &Y);
 	double polynom_Newton(MatriX_Vector &A, MatriX_Vector &X, double x);
 
-	//метод наименьших квадратов
-	//линейная аппроксимация
-	//аппроксимация n - 1 - ной степени
+	//РјРµС‚РѕРґ РЅР°РёРјРµРЅСЊС€РёС… РєРІР°РґСЂР°С‚РѕРІ
+	//Р»РёРЅРµР№РЅР°СЏ Р°РїРїСЂРѕРєСЃРёРјР°С†РёСЏ
+	//Р°РїРїСЂРѕРєСЃРёРјР°С†РёСЏ n - 1 - РЅРѕР№ СЃС‚РµРїРµРЅРё
 	MatriX_Vector nApr(MatriX_Vector &X, MatriX_Vector &Y, int n);
 
 	MatriX interSpline(MatriX_Vector &X, MatriX_Vector &Y);
